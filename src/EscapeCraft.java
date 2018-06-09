@@ -31,4 +31,12 @@ public class EscapeCraft {
     }
     return ret;
   }
+
+  public static byte[] reverse(byte[] bytes) {
+    byte[] ret = new byte[bytes.length];
+    for (int i = 0; i < bytes.length; i++) {
+      ret[bytes.length - (i + 1)] = bytes[i];
+    }
+    return ret;
+  }
 }

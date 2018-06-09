@@ -29,4 +29,10 @@ public class EscapeCraftTest {
     byte[] bytes = EscapeCraft.removeEvery3Bytes(new byte[]{0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07});
     assertThat(bytes, is(new byte[]{0x01, 0x02, 0x04, 0x05, 0x07}));
   }
+
+  @Test
+  public void reverseBytes() {
+    byte[] bytes = EscapeCraft.reverse(new byte[]{0x01, 0x02, 0x03});
+    assertThat(bytes, is(new byte[]{0x03, 0x02, 0x01}));
+  }
 }
