@@ -25,11 +25,7 @@ public class EscapeCraft {
       }
       bytes.add(content[i]);
     }
-    byte[] ret = new byte[bytes.size()];
-    for (int i = 0; i < ret.length; i++) {
-      ret[i] = bytes.get(i);
-    }
-    return ret;
+    return getPrimitive(bytes);
   }
 
   public static byte[] reverse(byte[] bytes) {
@@ -60,6 +56,10 @@ public class EscapeCraft {
         bytes.add(content[i]);
       }
     }
+    return getPrimitive(bytes);
+  }
+
+  private static byte[] getPrimitive(ArrayList<Byte> bytes) {
     byte[] ret = new byte[bytes.size()];
     for (int i = 0; i < ret.length; i++) {
       ret[i] = bytes.get(i);
