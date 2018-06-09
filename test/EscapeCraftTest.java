@@ -42,4 +42,10 @@ public class EscapeCraftTest {
     assertThat(content, is(new byte[]{0x07, 0x05, 0x04, 0x02, 0x01}));
   }
 
+  @Test
+  public void keepsTheFirstBytes() {
+    byte[] bytes = EscapeCraft.keepFirstBytes(new byte[]{0x01, 0x02, 0x03}, 1);
+    assertThat(bytes, is(new byte[]{0x01}));
+  }
+
 }

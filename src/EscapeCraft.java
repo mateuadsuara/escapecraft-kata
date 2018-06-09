@@ -49,4 +49,7 @@ public class EscapeCraft {
     return content;
   }
 
+  public static byte[] keepFirstBytes(byte[] content, int amount) {
+    return Arrays.copyOfRange(content, 0, amount);
+  }
 }
