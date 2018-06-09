@@ -60,4 +60,9 @@ public class EscapeCraftTest {
     assertThat(bytes, is(new byte[]{0x03}));
   }
 
+  @Test
+  public void concatsArrays() {
+    byte[] result = EscapeCraft.concat(new byte[]{0x01}, new byte[]{0x02}, new byte[]{0x03});
+    assertThat(result, is(new byte[]{0x01, 0x02, 0x03}));
+  }
 }

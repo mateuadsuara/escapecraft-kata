@@ -70,4 +70,26 @@ public class EscapeCraft {
   public static byte[] keepLastBytes(byte[] content, int amount) {
     return Arrays.copyOfRange(content, content.length - amount, content.length);
   }
+
+  public static byte[] decode2(String path) throws IOException {
+    byte[] content = readFile(path);
+    byte[] firstBytes = keepFirstBytes(content, 100);
+    byte[] remainingEvery3Bytes = keepsEvery3Bytes(removeLastBytes(removeFirstBytes(content, 100), 100));
+    byte[] lastBytes = keepLastBytes(content, 100);
+    content = removeEvery3Bytes(content);
+    content = reverse(content);
+    return content;
+  }
+
+  public static byte[] concat(byte[] a, byte[] b, byte[] c) {
+    byte[] ret = new byte[a.length + b.length + c.length];
+
+    System.arraycopy(a, 0, ret, 0, a.length);
+
+    System.arraycopy(b, 0, ret, a.length, b.length);
+
+    System.arraycopy(c, 0, ret, a.length + b.length, c.length);
+
+    return ret;
+  }
 }
