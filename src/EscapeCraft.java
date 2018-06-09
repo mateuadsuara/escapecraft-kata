@@ -52,4 +52,18 @@ public class EscapeCraft {
   public static byte[] keepFirstBytes(byte[] content, int amount) {
     return Arrays.copyOfRange(content, 0, amount);
   }
+
+  public static byte[] keepsEvery3Bytes(byte[] content) {
+    ArrayList<Byte> bytes = new ArrayList<>();
+    for (int i = 0; i < content.length; i++) {
+      if (i % 3 == 2) {
+        bytes.add(content[i]);
+      }
+    }
+    byte[] ret = new byte[bytes.size()];
+    for (int i = 0; i < ret.length; i++) {
+      ret[i] = bytes.get(i);
+    }
+    return ret;
+  }
 }

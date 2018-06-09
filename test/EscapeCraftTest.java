@@ -48,4 +48,9 @@ public class EscapeCraftTest {
     assertThat(bytes, is(new byte[]{0x01}));
   }
 
+  @Test
+  public void keepsEvery3Bytes() {
+    byte[] bytes = EscapeCraft.keepsEvery3Bytes(new byte[]{0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07});
+    assertThat(bytes, is(new byte[]{0x03, 0x06}));
+  }
 }
