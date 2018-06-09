@@ -39,4 +39,14 @@ public class EscapeCraft {
     }
     return ret;
   }
+
+  public static byte[] decode(String path) throws IOException {
+    byte[] content = readFile(path);
+    content = removeFirstBytes(content, 100);
+    content = removeLastBytes(content, 100);
+    content = removeEvery3Bytes(content);
+    content = reverse(content);
+    return content;
+  }
+
 }

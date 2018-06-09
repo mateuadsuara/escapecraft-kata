@@ -35,4 +35,11 @@ public class EscapeCraftTest {
     byte[] bytes = EscapeCraft.reverse(new byte[]{0x01, 0x02, 0x03});
     assertThat(bytes, is(new byte[]{0x03, 0x02, 0x01}));
   }
+
+  @Test
+  public void decodesTheFile() throws IOException {
+    byte[] content = EscapeCraft.decode("/Users/m/Documents/Projects/escapecraft-kata/test/data/example_full_file.bin");
+    assertThat(content, is(new byte[]{0x07, 0x05, 0x04, 0x02, 0x01}));
+  }
+
 }
