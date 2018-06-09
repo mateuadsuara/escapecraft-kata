@@ -66,4 +66,8 @@ public class EscapeCraft {
     }
     return ret;
   }
+
+  public static byte[] keepLastBytes(byte[] content, int amount) {
+    return Arrays.copyOfRange(content, content.length - amount, content.length);
+  }
 }
