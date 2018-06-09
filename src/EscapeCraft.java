@@ -11,4 +11,8 @@ public class EscapeCraft {
   public static byte[] removeFirstBytes(byte[] content, int amount) {
     return Arrays.copyOfRange(content, amount, content.length);
   }
+
+  public static byte[] removeLastBytes(byte[] content, int amount) {
+    return Arrays.copyOfRange(content, 0, content.length - amount);
+  }
 }

@@ -17,4 +17,10 @@ public class EscapeCraftTest {
     byte[] bytes = EscapeCraft.removeFirstBytes(new byte[]{0x01, 0x02, 0x03}, 1);
     assertThat(bytes, is(new byte[]{0x02, 0x03}));
   }
+
+  @Test
+  public void removesTheLastBytes() {
+    byte[] bytes = EscapeCraft.removeLastBytes(new byte[]{0x01, 0x02, 0x03}, 1);
+    assertThat(bytes, is(new byte[]{0x01, 0x02}));
+  }
 }
