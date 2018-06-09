@@ -73,12 +73,22 @@ public class EscapeCraft {
 
   public static byte[] decode2(String path) throws IOException {
     byte[] content = readFile(path);
+
     byte[] firstBytes = keepFirstBytes(content, 100);
-    byte[] remainingEvery3Bytes = keepsEvery3Bytes(removeLastBytes(removeFirstBytes(content, 100), 100));
+
+    byte[] end = removeFirstBytes(content, 100);
+    byte[] middle = removeLastBytes(end, 100);
+    byte[] remainingEvery3Bytes = keepsEvery3Bytes(middle);
+
     byte[] lastBytes = keepLastBytes(content, 100);
-    content = removeEvery3Bytes(content);
-    content = reverse(content);
-    return content;
+
+    byte[] descartedBytes = concat(firstBytes, remainingEvery3Bytes, lastBytes);
+
+    byte[] finalContent = removeFirstBytes(descartedBytes, 900);
+    finalContent = removeLastBytes(finalContent, 900);
+    finalContent = removeEvery3Bytes(finalContent);
+    finalContent = reverse(finalContent);
+    return finalContent;
   }
 
   public static byte[] concat(byte[] a, byte[] b, byte[] c) {
